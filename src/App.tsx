@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@emotion/react';
+import { css, Global, ThemeProvider } from '@emotion/react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

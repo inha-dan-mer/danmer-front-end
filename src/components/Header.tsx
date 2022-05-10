@@ -13,9 +13,11 @@ const Header = () => {
 const Container = styled.header`
   display: flex;
   position: sticky;
-  background-color: ${({ theme }) => theme.colors.primary};
-  height: 60px;
+  top: 0;
   align-items: center;
+  height: 60px;
+  z-index: 9999;
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 const Logo = styled(Link)`
   font-size: 1.9rem;
