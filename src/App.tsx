@@ -4,7 +4,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import theme from '@/styles/theme';
 
-import MainPage from './pages/main';
+import PageLayout from '@/components/PageLayout';
+const MainPage = React.lazy(() => import('@/pages/main'));
 
 const queryClient = new QueryClient();
 
@@ -13,9 +14,11 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Router>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-          </Routes>
+          <PageLayout>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+            </Routes>
+          </PageLayout>
         </Router>
       </ThemeProvider>
     </QueryClientProvider>
