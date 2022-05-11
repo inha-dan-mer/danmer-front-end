@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styled from '@emotion/styled';
 import Header from '@/components/Header';
 
@@ -10,7 +10,8 @@ const PageLayout = ({ children }: Props) => {
   return (
     <Container>
       <Header />
-      {children}
+      {/* TODO fallback 넣기  */}
+      <Suspense>{children}</Suspense>
     </Container>
   );
 };

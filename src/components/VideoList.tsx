@@ -11,7 +11,7 @@ const VideoList = () => {
   useEffect(() => {
     getPracticeVideos()
       .then(({ data }) => {
-        setVideoList(data);
+        setVideoList(data.videos);
       })
       .catch((reason) => {
         // TODO 토스트 메세지 컴포넌트
@@ -21,21 +21,22 @@ const VideoList = () => {
 
   return (
     <Container>
-      {videoList?.map(({ videoInfo, dancer }) => (
-        <li key={videoInfo.videoId}>
-          <ThumbnailContainer>
-            <ThumbnailImg src={videoInfo.thumbnail} />
-            <Info className="videolist__videoinfo">
-              <Title>{videoInfo.title}</Title>
-              <SubTitle>{dancer.name}</SubTitle>
-            </Info>
-            <Buttons className="videolist__videoinfo--btn">
-              <Button>연습하기</Button>
-              <Button>피드백 받기</Button>
-            </Buttons>
-          </ThumbnailContainer>
-        </li>
-      ))}
+      {videoList &&
+        videoList.map(({ videoInfo, dancer }) => (
+          <li key={videoInfo.videoId}>
+            <ThumbnailContainer>
+              <ThumbnailImg src={videoInfo.thumbnail} />
+              <Info className="videolist__videoinfo">
+                <Title>{videoInfo.title}</Title>
+                <SubTitle>{dancer.name}</SubTitle>
+              </Info>
+              <Buttons className="videolist__videoinfo--btn">
+                <Button>연습하기</Button>
+                <Button>피드백 받기</Button>
+              </Buttons>
+            </ThumbnailContainer>
+          </li>
+        ))}
     </Container>
   );
 };
