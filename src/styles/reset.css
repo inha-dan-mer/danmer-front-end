@@ -46,3 +46,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+@font-face {
+    font-family: 'Riffic';
+    src: url("../assets/fonts/riffic-bold-webfont.woff") format('woff'),
+        url("../assets/fonts/riffic-bold-webfont.woff2") format('woff2'),
+}

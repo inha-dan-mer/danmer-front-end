@@ -21,7 +21,8 @@ const Container = styled.header`
 `;
 const Logo = styled(Link)`
   font-size: 1.9rem;
-  font-weight: 700;
+  font-family: Riffic;
+  font-weight: bold;
   text-decoration: none;
   padding: 10px 20px;
   color: ${({ theme }) => theme.colors.background};

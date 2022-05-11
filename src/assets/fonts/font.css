@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Riffic';
+    font-style: normal;
+    font-weight: bold;
+    src: url("./riffic-bold-webfont.woff") format('woff'),
+        url("./riffic-bold-webfont.woff2") format('woff2'),
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-weight: normal;
+    src: url("./Nunito-VariableFont_wght.ttf") format('truetype'),
+}

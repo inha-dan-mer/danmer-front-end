@@ -12,12 +12,18 @@ const Button = ({ children, ...restProps }: Props) => {
 const ButtonContainer = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.colors.primary};
-  padding: 1rem 1.2rem;
-  border-radius: 10px;
+  padding: 12px 20px;
+  border-radius: 800px;
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.colors.background};
+  font-weight: 500;
 
   &:hover {
     cursor: pointer;
-    opacity: 0.8;
+    filter: brightness(120%);
+  }
+  &:active {
+    filter: brightness(80%);
   }
 `;
 
