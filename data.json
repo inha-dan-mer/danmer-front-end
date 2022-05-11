@@ -1,158 +1,150 @@
 {
-  "videos": [
-    {
-      "videoInfo": {
-        "videoId": 1,
-        "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-        "title": "짱구",
-        "url": ""
+  "videos": {
+    "videos": [
+      {
+        "videoInfo": {
+          "videoId": 1,
+          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 2,
-        "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 2,
+          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 3,
-        "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 3,
+          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 4,
-        "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 4,
+          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 5,
-        "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 5,
+          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 6,
-        "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 6,
+          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 7,
-        "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 7,
+          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 8,
-        "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 8,
+          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 9,
-        "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 9,
+          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 10,
-        "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 10,
+          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    },
-    {
-      "videoInfo": {
-        "videoId": 11,
-        "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-        "title": "짱구",
-        "url": ""
+      {
+        "videoInfo": {
+          "videoId": 11,
+          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
+      {
+        "videoInfo": {
+          "videoId": 12,
+          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
+          "title": "짱구",
+          "url": ""
+        },
+        "dancer": {
+          "uid": 0,
+          "name": "짱구구구짱"
+        }
       }
-    },
-    {
-      "videoInfo": {
-        "videoId": 12,
-        "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-        "title": "짱구",
-        "url": ""
-      },
-      "dancer": {
-        "uid": 0,
-        "name": "짱구구구짱"
-      }
-    }
-  ],
-  "comments": [
-    {
-      "body": "some comment",
-      "videoId": 1,
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
+    ]
   }
 }
