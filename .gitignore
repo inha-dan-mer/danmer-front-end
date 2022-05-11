@@ -117,3 +117,4 @@ $RECYCLE.BIN/
 .env.production
 
 /dist
+/build

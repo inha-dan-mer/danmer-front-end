@@ -38,10 +38,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.EnvironmentPlugin(['API_URL']),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(dotenv.config().parsed),
-    }),
-  ],
 };
