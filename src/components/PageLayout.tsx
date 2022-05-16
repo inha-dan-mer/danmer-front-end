@@ -18,7 +18,7 @@ const PageLayout = ({ children }: Props) => {
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
-  height: 100vh;
+  height: calc(100vh - 60px);
 `;
 
 export default PageLayout;

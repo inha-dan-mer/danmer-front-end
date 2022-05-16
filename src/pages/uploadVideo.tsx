@@ -1,15 +1,12 @@
 import React from 'react';
-import styled from '@emotion/styled';
-
-import VideoList from '@/components/VideoList';
-import Button from '@/components/buttons/Button';
 import { useLocation } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 const UploadVideoPage = () => {
   const { search } = useLocation();
-  console.log(search.replace('?', ''));
+  console.log(search);
 
-  return <Container>upload video</Container>;
+  return <Container></Container>;
 };
 
 export default UploadVideoPage;

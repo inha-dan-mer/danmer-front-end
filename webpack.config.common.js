@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv');
 
 module.exports = {
   entry: { app: path.join(__dirname, 'src', 'index.tsx') },
@@ -38,4 +37,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
+  ],
 };

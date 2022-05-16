@@ -8,6 +8,7 @@ import PageLayout from '@/components/PageLayout';
 
 const MainPage = React.lazy(() => import('@/pages/main'));
 const UploadVideoPage = React.lazy(() => import('@/pages/uploadVideo'));
+const PracticeDancingPage = React.lazy(() => import('@/pages/practiceDancing'));
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/video/upload" element={<UploadVideoPage />} />
+              <Route path="/video/practice/:videoId" element={<PracticeDancingPage />} />
             </Routes>
           </PageLayout>
         </Router>
