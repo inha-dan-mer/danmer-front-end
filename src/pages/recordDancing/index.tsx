@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import VideoContents from './VideoContents';
 
-const PracticeDancing = () => {
+const RecordDancing = () => {
   const params = useParams();
   console.log(params?.videoId);
 
@@ -33,4 +33,4 @@ const SubTitle = styled.h2`
   color: lightgray;
 `;
 
-export default PracticeDancing;
+export default RecordDancing;

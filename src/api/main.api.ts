@@ -20,3 +20,10 @@ export const getPracticeVideos = () =>
       })
     )
   );
+
+export const getVideoRange = (videoUrl: string, range: [number, number]) =>
+  axios.get(videoUrl, {
+    headers: {
+      Range: `bytes=${range[0] - range[1]}`,
+    },
+  });

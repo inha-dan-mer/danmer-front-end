@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 import VideoList from '@/components/VideoList';
 import Button from '@/components/buttons/Button';
-import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
   const navigate = useNavigate();

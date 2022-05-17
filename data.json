@@ -14,6 +14,62 @@
             "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/%ED%9D%B0%EB%91%A5%EC%9D%B4.jpg",
             "user": 1,
             "created_at": "2022-05-15T07:15:12.834709Z"
+        },
+        {
+            "pk": 3,
+            "video_name": "test3",
+            "video": "https://danmer-videos.s3.amazonaws.com/%EC%A7%B1%EA%B5%AC.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/%ED%9D%B0%EB%91%A5%EC%9D%B4.jpg",
+            "user": 1,
+            "created_at": "2022-05-17T12:12:10.286722Z"
+        },
+        {
+            "pk": 4,
+            "video_name": "test",
+            "video": "https://danmer-videos.s3.amazonaws.com/hey-mama_tutor_cut.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/__________2.png",
+            "user": 1,
+            "created_at": "2022-05-17T12:14:23.640069Z"
+        },
+        {
+            "pk": 5,
+            "video_name": "test5",
+            "video": "https://danmer-videos.s3.amazonaws.com/%EC%A7%B1%EA%B5%AC.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/%EC%A7%B1%EA%B5%AC.jpg",
+            "user": 1,
+            "created_at": "2022-05-17T12:30:42.054305Z"
+        },
+        {
+            "pk": 6,
+            "video_name": "제목",
+            "video": "https://danmer-videos.s3.amazonaws.com/hey-mama_tutee_%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%87%E1%85%A9%E1%86%AB.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/__________4.png",
+            "user": 1,
+            "created_at": "2022-05-17T12:46:01.583463Z"
+        },
+        {
+            "pk": 7,
+            "video_name": "test",
+            "video": "https://danmer-videos.s3.amazonaws.com/hey-mama_tutor_cut.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/__________2.png",
+            "user": 1,
+            "created_at": "2022-05-17T12:47:10.343110Z"
+        },
+        {
+            "pk": 8,
+            "video_name": "test",
+            "video": "https://danmer-videos.s3.amazonaws.com/hey-mama_tutor_cut.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/__________2.png",
+            "user": 1,
+            "created_at": "2022-05-17T12:55:18.852620Z"
+        },
+        {
+            "pk": 9,
+            "video_name": "제목2",
+            "video": "https://danmer-videos.s3.amazonaws.com/hey-mama-tutee_cut.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/thumbnail.jpeg",
+            "user": 1,
+            "created_at": "2022-05-18T01:53:35.606287Z"
         }
     ]
 }
