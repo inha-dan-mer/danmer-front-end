@@ -10,8 +10,8 @@ const VideoList = () => {
 
   useEffect(() => {
     getPracticeVideos()
-      .then(({ data }) => {
-        setVideoList(data.videos);
+      .then((data) => {
+        setVideoList(data);
       })
       .catch((reason) => {
         // TODO 토스트 메세지 컴포넌트

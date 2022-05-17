@@ -1,150 +1,19 @@
 {
-  "videos": {
-    "videos": [
-      {
-        "videoInfo": {
-          "videoId": 1,
-          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-          "title": "짱구",
-          "url": ""
+    "videos": [{
+            "pk": 1,
+            "video_name": "test1",
+            "video": "https://danmer-videos.s3.amazonaws.com/%EC%A7%B1%EA%B5%AC.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/%EC%A7%B1%EA%B5%AC.jpg",
+            "user": 1,
+            "created_at": "2022-05-15T07:14:56.097180Z"
         },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
+        {
+            "pk": 2,
+            "video_name": "test2",
+            "video": "https://danmer-videos.s3.amazonaws.com/%EC%A7%B1%EA%B5%AC.mp4",
+            "thumbnail_img": "https://danmer-videos.s3.amazonaws.com/images/2022/05/%ED%9D%B0%EB%91%A5%EC%9D%B4.jpg",
+            "user": 1,
+            "created_at": "2022-05-15T07:15:12.834709Z"
         }
-      },
-      {
-        "videoInfo": {
-          "videoId": 2,
-          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 3,
-          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 4,
-          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 5,
-          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 6,
-          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 7,
-          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 8,
-          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 9,
-          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 10,
-          "thumbnail": "https://item.kakaocdn.net/do/fd0050f12764b403e7863c2c03cd4d2d7154249a3890514a43687a85e6b6cc82",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 11,
-          "thumbnail": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/23/b71449f8-e830-45a0-bb4d-7b1a328e19f2.jpg",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      },
-      {
-        "videoInfo": {
-          "videoId": 12,
-          "thumbnail": "https://t1.daumcdn.net/cfile/tistory/99AE233E5F8CDE7319",
-          "title": "짱구",
-          "url": ""
-        },
-        "dancer": {
-          "uid": 0,
-          "name": "짱구구구짱"
-        }
-      }
     ]
-  }
 }
