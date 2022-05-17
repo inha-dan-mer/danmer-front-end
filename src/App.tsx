@@ -1,13 +1,16 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
+
 import theme from '@/styles/theme';
+import { URL_VALUE } from '@/utils/constants';
 
 import PageLayout from '@/components/PageLayout';
 
 const MainPage = React.lazy(() => import('@/pages/main'));
 const UploadVideoPage = React.lazy(() => import('@/pages/uploadVideo'));
+const VideoDetailPage = React.lazy(() => import('@/pages/videoDetail'));
 const PracticeDancingPage = React.lazy(() => import('@/pages/practiceDancing'));
 
 const queryClient = new QueryClient();
@@ -19,9 +22,10 @@ const App = () => {
         <Router>
           <PageLayout>
             <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/video/upload" element={<UploadVideoPage />} />
-              <Route path="/video/practice/:videoId" element={<PracticeDancingPage />} />
+              <Route path={URL_VALUE.main} element={<MainPage />} />
+              <Route path={URL_VALUE.videoUpload} element={<UploadVideoPage />} />
+              <Route path={URL_VALUE.videoDetail} element={<VideoDetailPage />} />
+              <Route path={URL_VALUE.practiceDancing} element={<PracticeDancingPage />} />
             </Routes>
           </PageLayout>
         </Router>
