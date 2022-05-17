@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
-import { DancerVideo } from '@/interfaces/app.interface';
 import { getPracticeVideos } from '@/api/main.api';
+import { URL_VALUE } from '@/utils/constants';
+import { DancerVideo } from '@/interfaces/app.interface';
+
 import Button from '@/components/buttons/Button';
 
 const VideoList = () => {
+  const navigate = useNavigate();
   const [videoList, setVideoList] = useState<DancerVideo[] | null>(null);
 
   useEffect(() => {
@@ -31,8 +35,24 @@ const VideoList = () => {
                 <SubTitle>{dancer.name}</SubTitle>
               </Info>
               <Buttons className="videolist__videoinfo--btn">
-                <Button>연습하기</Button>
-                <Button>피드백 받기</Button>
+                <Button
+                  onClick={() =>
+                    navigate(
+                      URL_VALUE.videoDetail.replace(':videoId', videoInfo.videoId.toString())
+                    )
+                  }
+                >
+                  연습하기
+                </Button>
+                <Button
+                  onClick={() =>
+                    navigate(
+                      URL_VALUE.practiceDancing.replace(':videoId', videoInfo.videoId.toString())
+                    )
+                  }
+                >
+                  피드백 받기
+                </Button>
               </Buttons>
             </ThumbnailContainer>
           </li>
