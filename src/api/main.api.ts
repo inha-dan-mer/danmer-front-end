@@ -27,3 +27,19 @@ export const getVideoRange = (videoUrl: string, range: [number, number]) =>
       Range: `bytes=${range[0] - range[1]}`,
     },
   });
+
+export const getVideoDetail = (videoId: number) =>
+  axios.get<ResDancingVideos>(`/videos/${videoId}`).then(
+    ({ data: info }): DancerVideo => ({
+      videoInfo: {
+        videoId: info.pk,
+        thumbnail: info.thumbnail_img,
+        title: info.video_name,
+        url: info.video,
+      },
+      dancer: {
+        uid: info.user,
+        name: '',
+      },
+    })
+  );
