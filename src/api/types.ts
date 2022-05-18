@@ -9,9 +9,9 @@ export type ResDancingVideos = {
 
 /* 영상 업로드 */
 export type ReqUploadVideoParams = {
-  video_name: string;
+  videoName: string;
   video: string;
-  thumbnail_img: string;
+  thumbnailImg: string;
 };
 export type ResUploadVideo = {
   pk: number;

@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
+
+import { DancerVideo } from '@/interfaces/app.interface';
+import { getVideoDetail } from '@/api/main.api';
 
 import VideoContents from './VideoContents';
 
 const RecordDancing = () => {
   const params = useParams();
-  console.log(params?.videoId);
+  const [videoDetail, setVideoDetail] = useState<DancerVideo>();
+
+  useEffect(() => {
+    const { videoId } = params;
+    if (!videoId) return;
+
+    getVideoDetail(+videoId).then((res) => setVideoDetail(res));
+  }, [params?.videoId]);
 
   return (
     <Container>
-      <Title>Hey MaMa</Title>
-      <SubTitle>뚜둔</SubTitle>
-      <VideoContents />
+      {videoDetail && (
+        <>
+          <Title>{videoDetail.videoInfo.title}</Title>
+          <SubTitle>{videoDetail.dancer.name}</SubTitle>
+          <VideoContents videoDetail={videoDetail} />
+        </>
+      )}
     </Container>
   );
 };

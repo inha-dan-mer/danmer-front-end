@@ -1,7 +1,7 @@
 import axios from '@/utils/request';
 
 import { DancerVideo } from '@/interfaces/app.interface';
-import { ResDancingVideos } from './types';
+import { ReqUploadVideoParams, ResDancingVideos, ResUploadVideo } from './types';
 
 export const getPracticeVideos = () =>
   axios.get<ResDancingVideos[]>(`/videos`).then(({ data }) =>
@@ -43,3 +43,25 @@ export const getVideoDetail = (videoId: number) =>
       },
     })
   );
+
+export const uploadDancingVideoFile = (formData: FormData) =>
+  axios
+    .post<ResUploadVideo>('/video', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then(({ data: info }) => ({
+      videoInfo: {
+        videoId: info.pk,
+        thumbnail: info.thumbnail_img,
+        title: info.video_name,
+        url: info.video,
+      },
+      dancer: {
+        uid: info.user,
+        name: '',
+      },
+    }));
+
+export const uploadPracticeVideoFile = () => axios.post('/practice');

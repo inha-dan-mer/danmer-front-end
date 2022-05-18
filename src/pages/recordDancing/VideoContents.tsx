@@ -1,11 +1,19 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 
+import { DancerVideo } from '@/interfaces/app.interface';
+
 import ProgressBar from '@/components/ProgressBar';
+
+interface Props {
+  videoDetail: DancerVideo;
+}
+
 function wait(delayInMS: number) {
   return new Promise((resolve) => setTimeout(resolve, delayInMS));
 }
-const VideoContents = () => {
+
+const VideoContents = ({ videoDetail }: Props) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const practiceVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -69,7 +77,7 @@ const VideoContents = () => {
       const duration = videoRef.current?.duration;
       if (!duration) return;
       startRecording(duration * 1000)?.then((recordedChunks) => {
-        let recordedBlob = new Blob(recordedChunks, { type: 'video/webm' });
+        let recordedBlob = new Blob(recordedChunks, { type: 'video/mp4' });
         console.log(recordedBlob);
       });
     };
@@ -85,7 +93,7 @@ const VideoContents = () => {
         <div style={{ flex: 1 }}>
           <video
             ref={videoRef}
-            src="https://danmer-videos.s3.amazonaws.com/%EC%A7%B1%EA%B5%AC.mp4"
+            src={videoDetail.videoInfo.url}
             style={{ width: '100%' }}
             onPlay={handlePlay}
             onEnded={handleEnd}

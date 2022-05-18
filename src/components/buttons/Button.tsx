@@ -1,15 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-}
-
-const Button = ({ children, ...restProps }: Props) => {
-  return <ButtonContainer {...restProps}>{children}</ButtonContainer>;
-};
-
-const ButtonContainer = styled.button`
+const Button = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 12px 20px;
@@ -17,13 +8,14 @@ const ButtonContainer = styled.button`
   font-size: 0.95rem;
   color: ${({ theme }) => theme.colors.background};
   font-weight: 500;
+  transition: all 0.2s;
 
   &:hover {
     cursor: pointer;
-    filter: brightness(120%);
+    background-color: #9cf0e3;
   }
   &:active {
-    filter: brightness(80%);
+    background-color: rgba(47, 244, 214, 0.8);
   }
 `;
 
