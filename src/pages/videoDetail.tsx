@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import { URL_VALUE } from '@/utils/constants';
 import { DancerVideo } from '@/interfaces/app.interface';
 import { getVideoDetail } from '@/api/main.api';
 
 import Button from '@/components/buttons/Button';
 
 const VideoDetailPage = () => {
+  const navigation = useNavigate();
   const params = useParams();
   const [videoDetail, setVideoDetail] = useState<DancerVideo>();
 
@@ -30,7 +32,18 @@ const VideoDetailPage = () => {
             controls
           ></video>
           <DetailButtons>
-            <Button>피드백 받으러 가기</Button>
+            <Button
+              onClick={() =>
+                navigation(
+                  URL_VALUE.recordDancing.replace(
+                    ':videoId',
+                    videoDetail.videoInfo.videoId.toString()
+                  )
+                )
+              }
+            >
+              피드백 받으러 가기
+            </Button>
           </DetailButtons>
         </>
       )}

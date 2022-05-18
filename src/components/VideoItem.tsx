@@ -74,9 +74,7 @@ const VideoItem = ({ thumbnailImgUrl, videoId, videoTitle, videoUrl, dancerName 
           연습하기
         </Button>
         <Button
-          onClick={() =>
-            navigate(URL_VALUE.practiceDancing.replace(':videoId', videoId.toString()))
-          }
+          onClick={() => navigate(URL_VALUE.videoDetail.replace(':videoId', videoId.toString()))}
         >
           피드백 받기
         </Button>
