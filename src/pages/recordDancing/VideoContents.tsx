@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import { DancerVideo } from '@/interfaces/app.interface';
 
 import ProgressBar from '@/components/ProgressBar';
+import Button from '@/components/buttons/Button';
+import Modal from '@/components/Modal';
 
 interface Props {
   videoDetail: DancerVideo;
@@ -19,43 +21,49 @@ const VideoContents = ({ videoDetail }: Props) => {
 
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
   const [mediaStream, setMediastream] = useState<MediaStream>();
-
-  const handleTimeUpdate = (time: number) => {
-    setCurrentVideoTime(time);
-  };
-
-  const handlePlay = () => {
-    console.log('play');
-  };
-
-  const handleEnd = () => {
-    console.log('end');
-  };
+  const [recordedBlob, setRecordedBlob] = useState<string>();
 
   const startRecording = (lengthInMS: number) => {
-    if (!mediaStream) return;
+    if (!mediaStream || !videoRef?.current?.duration) return;
 
-    let recorder = new MediaRecorder(mediaStream);
-    let data: Blob[] = [];
+    const recorder = new MediaRecorder(mediaStream);
+    const data: Blob[] = [];
 
     recorder.ondataavailable = (event) => data.push(event.data);
     recorder.start();
+    videoRef.current.play();
     console.log(recorder.state + ' for ' + lengthInMS / 1000 + ' seconds...');
 
-    let stopped = new Promise((resolve, reject) => {
+    const stopped = new Promise((resolve, reject) => {
       recorder.onstop = resolve;
       // @ts-ignore
       recorder.onerror = (event) => reject(event.name);
     });
 
-    let recorded = wait(lengthInMS).then(() => recorder.state == 'recording' && recorder.stop());
+    const recorded = wait(lengthInMS).then(() => recorder.state == 'recording' && recorder.stop());
 
     return Promise.all([stopped, recorded]).then(() => data);
   };
 
-  const stop = () => {
-    if (!mediaStream) return;
-    mediaStream.getTracks().forEach((track) => track.stop());
+  const handleTimeUpdate = (time: number) => {
+    setCurrentVideoTime(time);
+  };
+
+  const handleStartButtonClick = () => {
+    if (!videoRef?.current?.duration) return;
+
+    const { duration } = videoRef.current;
+    startRecording(duration * 1000)
+      ?.then((recordedChunks) => {
+        const blob = new Blob(recordedChunks, { type: 'video/mp4' });
+        setRecordedBlob(URL.createObjectURL(blob));
+      })
+      .catch((e) => console.error(e));
+  };
+
+  const uploadPracticeVideo = () => {
+    // TODO 영상 업로드
+    setRecordedBlob(undefined);
   };
 
   useEffect(() => {
@@ -65,61 +73,56 @@ const VideoContents = ({ videoDetail }: Props) => {
         setMediastream(stream);
       })
       .catch((reason) => {
-        console.log(reason);
+        console.error(reason);
       });
   }, []);
 
   useEffect(() => {
     if (!practiceVideoRef.current || !mediaStream) return;
     practiceVideoRef.current.srcObject = mediaStream;
-    // @ts-ignore
-    videoRef.current?.onplaying = () => {
-      const duration = videoRef.current?.duration;
-      if (!duration) return;
-      startRecording(duration * 1000)?.then((recordedChunks) => {
-        let recordedBlob = new Blob(recordedChunks, { type: 'video/mp4' });
-        console.log(recordedBlob);
-      });
-    };
-    // @ts-ignore
-    videoRef.current?.onended = () => {
-      stop();
-    };
   }, [mediaStream]);
 
   return (
-    <>
-      <Videos>
-        <div style={{ flex: 1 }}>
-          <video
-            ref={videoRef}
-            src={videoDetail.videoInfo.url}
-            style={{ width: '100%' }}
-            onPlay={handlePlay}
-            onEnded={handleEnd}
-            onTimeUpdate={({ target }) =>
-              handleTimeUpdate((target as HTMLVideoElement).currentTime)
-            }
-            controls
-          />
-        </div>
-        {useMemo(
-          () => (
-            <>
-              <Divider />
-              <div style={{ flex: 1 }}>
-                <WebCam ref={practiceVideoRef} autoPlay />
-              </div>
-            </>
-          ),
-          [mediaStream]
-        )}
-      </Videos>
-      <ProgressBar max={videoRef.current?.duration} value={currentVideoTime} />
-    </>
+    <Container>
+      <div>
+        <ProgressBar max={videoRef.current?.duration} value={currentVideoTime} />
+        <Videos>
+          <div style={{ flex: 1 }}>
+            <video
+              ref={videoRef}
+              src={videoDetail.videoInfo.url}
+              style={{ width: '100%' }}
+              onTimeUpdate={({ target }) =>
+                handleTimeUpdate((target as HTMLVideoElement).currentTime)
+              }
+            />
+          </div>
+          {useMemo(
+            () => (
+              <>
+                <Divider />
+                <div style={{ flex: 1 }}>
+                  <WebCam ref={practiceVideoRef} autoPlay />
+                </div>
+              </>
+            ),
+            [mediaStream]
+          )}
+        </Videos>
+      </div>
+      <Button onClick={handleStartButtonClick}>녹화 시작</Button>
+      <Modal visible={!!recordedBlob} title="연습 영상 미리보기" onOk={uploadPracticeVideo}>
+        <video src={recordedBlob} style={{ width: '100%' }} controls />
+      </Modal>
+    </Container>
   );
 };
 
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const Divider = styled.div`
   height: inherit;
   width: 1px;
