@@ -31,6 +31,7 @@ const VideoList = () => {
               videoTitle={videoInfo.title}
               videoUrl={videoInfo.url}
               dancerName={dancer.name}
+              artist={videoInfo.artist}
             />
           </li>
         ))}

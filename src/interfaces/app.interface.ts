@@ -3,6 +3,7 @@ export interface Video {
   thumbnail: string;
   title: string;
   url: string;
+  artist: string;
 }
 export interface User {
   uid: number;

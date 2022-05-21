@@ -5,6 +5,7 @@ export type ResDancingVideos = {
   thumbnail_img: string;
   user: number;
   created_at: string;
+  singer: string;
 };
 
 /* 영상 업로드 */

@@ -12,9 +12,10 @@ interface Props {
   videoTitle: string;
   videoUrl: string;
   dancerName: string;
+  artist: string;
 }
 
-const VideoItem = ({ thumbnailImgUrl, videoId, videoTitle, videoUrl, dancerName }: Props) => {
+const VideoItem = ({ thumbnailImgUrl, videoId, videoTitle, videoUrl, artist }: Props) => {
   let mouseEnterTimer = useRef<NodeJS.Timeout>();
   const previewRef = useRef<HTMLVideoElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -65,7 +66,7 @@ const VideoItem = ({ thumbnailImgUrl, videoId, videoTitle, videoUrl, dancerName 
       </VideoContainer>
       <Info className="videolist__videoinfo">
         <Title>{videoTitle}</Title>
-        <SubTitle>{dancerName}</SubTitle>
+        <SubTitle>{artist}</SubTitle>
       </Info>
       <Buttons className="videolist__videoinfo--btn">
         <Button
