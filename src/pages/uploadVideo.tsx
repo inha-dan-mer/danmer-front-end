@@ -1,5 +1,6 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 import { uploadDancingVideoFile } from '@/api/main.api';
@@ -13,18 +14,23 @@ interface FormValues {
   artistName: string;
   videoFile: File;
   thumbnailFile: File;
+  singer: string;
 }
 
 const UploadVideoPage = () => {
   const { control, handleSubmit, setValue } = useForm<FormValues>();
+  const navigate = useNavigate();
 
   const handleUploadFile = (input: FormValues) => {
     const formData = new FormData();
     formData.append('video_name', input.title);
     formData.append('video', input.videoFile);
-    formData.append('thumbnailImg', input.thumbnailFile);
+    formData.append('thumbnail_img', input.thumbnailFile);
+    formData.append('singer', input.singer);
 
-    uploadDancingVideoFile(formData);
+    uploadDancingVideoFile(formData).then(() => {
+      navigate('/');
+    });
   };
 
   const handleFileSelect = (
@@ -51,7 +57,7 @@ const UploadVideoPage = () => {
         <Card>
           <Label>원곡 아티스트</Label>
           <Controller
-            name="artistName"
+            name="singer"
             control={control}
             rules={{ required: '아티스트 이름을 입력해주세요' }}
             render={({ field }) => <TextInput type="text" placeholder="원곡 아티스트" {...field} />}

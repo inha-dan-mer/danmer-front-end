@@ -6,6 +6,7 @@ import { DancerVideo } from '@/interfaces/app.interface';
 import ProgressBar from '@/components/ProgressBar';
 import Button from '@/components/buttons/Button';
 import Modal from '@/components/Modal';
+import { uploadPracticeVideoFile } from '@/api/main.api';
 
 interface Props {
   videoDetail: DancerVideo;
@@ -62,8 +63,26 @@ const VideoContents = ({ videoDetail }: Props) => {
   };
 
   const uploadPracticeVideo = () => {
-    // TODO 영상 업로드
+    if (!recordedBlob) return;
+
+    fetch(recordedBlob)
+      .then((r) => r.blob())
+      .then((blob) => {
+        const formData = new FormData();
+        formData.append('tutor_video_id', videoDetail.videoInfo.videoId.toString());
+        formData.append(
+          'tutee_video',
+          new File(
+            [blob],
+            `practice-${videoDetail.videoInfo.videoId}-${new Date().toISOString()}.mp4`,
+            { type: 'video/mp4' }
+          )
+        );
+        uploadPracticeVideoFile(formData);
+      });
+
     setRecordedBlob(undefined);
+    URL.revokeObjectURL(recordedBlob);
   };
 
   useEffect(() => {

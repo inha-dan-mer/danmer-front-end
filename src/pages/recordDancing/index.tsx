@@ -22,8 +22,10 @@ const RecordDancing = () => {
     <Container>
       {videoDetail && (
         <>
-          <Title>{videoDetail.videoInfo.title}</Title>
-          <SubTitle>{videoDetail.dancer.name}</SubTitle>
+          <Title>
+            {videoDetail.videoInfo.title} - {videoDetail.videoInfo.artist}
+          </Title>
+          <SubTitle>{videoDetail.dancer.name || '안무가'}</SubTitle>
           <VideoContents videoDetail={videoDetail} />
         </>
       )}
