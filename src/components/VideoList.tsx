@@ -40,9 +40,21 @@ const VideoList = () => {
 };
 
 const Container = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-gap: 20px;
+
+  @media only screen and (max-width: 1600px) {
+    grid-template-columns: repeat(4, 250px);
+  }
+  @media only screen and (max-width: 1260px) {
+    grid-template-columns: repeat(3, 250px);
+  }
+  @media only screen and (max-width: 960px) {
+    grid-template-columns: repeat(2, 250px);
+  }
+  @media only screen and (max-width: 767px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export default VideoList;

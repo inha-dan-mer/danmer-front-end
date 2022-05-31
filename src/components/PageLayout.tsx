@@ -11,7 +11,7 @@ const PageLayout = ({ children }: Props) => {
     <Container>
       <Header />
       {/* TODO fallback 넣기  */}
-      <Suspense>{children}</Suspense>
+      <Suspense fallback={<div>loading...</div>}>{children}</Suspense>
     </Container>
   );
 };

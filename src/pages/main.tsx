@@ -13,7 +13,9 @@ const MainPage = () => {
       <MainHeader>
         <Button onClick={() => navigate('/video/upload?type=dancing')}>안무 영상 업로드</Button>
       </MainHeader>
-      <main style={{ paddingTop: 30, paddingBottom: 30 }}>
+      <main
+        style={{ paddingTop: 30, paddingBottom: 30, display: 'flex', justifyContent: 'center' }}
+      >
         <VideoList />
       </main>
     </MainContainer>
