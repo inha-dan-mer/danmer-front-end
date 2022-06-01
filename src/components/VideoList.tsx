@@ -43,7 +43,7 @@ const Container = styled.ul`
   display: grid;
   grid-gap: 20px;
 
-  @media only screen and (max-width: 1600px) {
+  @media only screen and (min-width: 1260px) {
     grid-template-columns: repeat(4, 250px);
   }
   @media only screen and (max-width: 1260px) {

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import VideoList from '@/components/VideoList';
 import Button from '@/components/buttons/Button';
+import danmerSvg from '@/assets/danmer.svg';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+const Wrapper = styled.div``;
 
 const MainContainer = styled.div`
   height: 100%;
