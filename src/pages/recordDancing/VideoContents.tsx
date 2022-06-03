@@ -87,7 +87,7 @@ const VideoContents = ({ videoDetail }: Props) => {
 
   useEffect(() => {
     navigator.mediaDevices
-      .getUserMedia({ video: true })
+      .getUserMedia({ video: { width: 1280, height: 720 } })
       .then((stream) => {
         setMediastream(stream);
       })
@@ -107,10 +107,9 @@ const VideoContents = ({ videoDetail }: Props) => {
         <ProgressBar max={videoRef.current?.duration} value={currentVideoTime} />
         <Videos>
           <div style={{ flex: 1 }}>
-            <video
+            <ReverseVideo
               ref={videoRef}
               src={videoDetail.videoInfo.url}
-              style={{ width: '100%' }}
               onTimeUpdate={({ target }) =>
                 handleTimeUpdate((target as HTMLVideoElement).currentTime)
               }
@@ -121,7 +120,7 @@ const VideoContents = ({ videoDetail }: Props) => {
               <>
                 <Divider />
                 <div style={{ flex: 1 }}>
-                  <WebCam ref={practiceVideoRef} autoPlay />
+                  <ReverseVideo ref={practiceVideoRef} autoPlay />
                 </div>
               </>
             ),
@@ -131,7 +130,8 @@ const VideoContents = ({ videoDetail }: Props) => {
       </div>
       <Button onClick={handleStartButtonClick}>녹화 시작</Button>
       <Modal visible={!!recordedBlob} title="연습 영상 미리보기" onOk={uploadPracticeVideo}>
-        <video src={recordedBlob} style={{ width: '100%' }} controls />
+        <ReverseVideo src={recordedBlob} />
+        <Button>다시 보기</Button>
       </Modal>
     </Container>
   );
@@ -152,7 +152,7 @@ const Videos = styled.section`
   display: flex;
   align-items: center;
 `;
-const WebCam = styled.video`
+const ReverseVideo = styled.video`
   width: 100%;
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg); /* Safari and Chrome */
