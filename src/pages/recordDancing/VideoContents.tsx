@@ -1,12 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 
+import { uploadPracticeVideoFile } from '@/api/main.api';
+
 import { DancerVideo } from '@/interfaces/app.interface';
 
+import StartCount, { StartcountRef } from './StartCount';
 import ProgressBar from '@/components/ProgressBar';
 import Button from '@/components/buttons/Button';
 import Modal from '@/components/Modal';
-import { uploadPracticeVideoFile } from '@/api/main.api';
 
 interface Props {
   videoDetail: DancerVideo;
@@ -17,6 +19,7 @@ function wait(delayInMS: number) {
 }
 
 const VideoContents = ({ videoDetail }: Props) => {
+  const startCountRef = useRef<StartcountRef>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const practiceVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -52,9 +55,14 @@ const VideoContents = ({ videoDetail }: Props) => {
 
   const handleStartButtonClick = () => {
     if (!videoRef?.current?.duration) return;
+    startCountRef.current?.start();
+  };
+
+  const startRecord = () => {
+    if (!videoRef?.current?.duration) return;
 
     const { duration } = videoRef.current;
-    startRecording(duration * 1000)
+    startRecording((duration + 2) * 1000)
       ?.then((recordedChunks) => {
         const blob = new Blob(recordedChunks, { type: 'video/mp4' });
         setRecordedBlob(URL.createObjectURL(blob));
@@ -130,9 +138,9 @@ const VideoContents = ({ videoDetail }: Props) => {
       </div>
       <Button onClick={handleStartButtonClick}>녹화 시작</Button>
       <Modal visible={!!recordedBlob} title="연습 영상 미리보기" onOk={uploadPracticeVideo}>
-        <ReverseVideo src={recordedBlob} />
-        <Button>다시 보기</Button>
+        <ReverseVideo src={recordedBlob} controls />
       </Modal>
+      <StartCount ref={startCountRef} onFinish={startRecord} />
     </Container>
   );
 };
