@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 import { uploadPracticeVideoFile } from '@/api/main.api';
 
@@ -19,6 +20,8 @@ function wait(delayInMS: number) {
 }
 
 const VideoContents = ({ videoDetail }: Props) => {
+  const navigate = useNavigate();
+
   const startCountRef = useRef<StartcountRef>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const practiceVideoRef = useRef<HTMLVideoElement>(null);
@@ -87,6 +90,7 @@ const VideoContents = ({ videoDetail }: Props) => {
           )
         );
         uploadPracticeVideoFile(formData);
+        navigate('/');
       });
 
     setRecordedBlob(undefined);

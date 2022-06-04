@@ -18,6 +18,8 @@ export interface ModalProps {
   cancelButtonProps?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
   title?: string;
   footer?: React.ReactNode[];
+  cancleButton?: boolean;
+  okButton?: boolean;
 }
 
 const Modal = ({
@@ -32,6 +34,8 @@ const Modal = ({
   cancleText = '취소',
   okButtonProps,
   cancelButtonProps,
+  cancleButton = true,
+  okButton = true,
 }: ModalProps) => {
   const [visible, setVisible] = useState(false);
 
@@ -55,12 +59,16 @@ const Modal = ({
         {children && <Content>{children}</Content>}
         {footer || (
           <Footer>
-            <Button onClick={closeModal} {...cancelButtonProps}>
-              {cancleText}
-            </Button>
-            <Button onClick={() => onOk?.()} {...okButtonProps}>
-              {okText}
-            </Button>
+            {cancleButton && (
+              <Button onClick={closeModal} {...cancelButtonProps}>
+                {cancleText}
+              </Button>
+            )}
+            {okButton && (
+              <Button onClick={() => onOk?.()} {...okButtonProps}>
+                {okText}
+              </Button>
+            )}
           </Footer>
         )}
       </ModalContainer>
