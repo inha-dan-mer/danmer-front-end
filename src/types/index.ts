@@ -1,5 +1,8 @@
-export type User = {
-  username: string;
+export type User = LoginUser & {
   email: string;
+};
+
+export type LoginUser = {
+  username: string;
   password: string;
 };
