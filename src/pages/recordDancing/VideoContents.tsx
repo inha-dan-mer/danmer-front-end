@@ -79,17 +79,16 @@ const VideoContents = ({ videoDetail }: Props) => {
     fetch(recordedBlob)
       .then((r) => r.blob())
       .then((blob) => {
-        const formData = new FormData();
-        formData.append('tutor_video_id', videoDetail.videoInfo.videoId.toString());
-        formData.append(
-          'tutee_video',
-          new File(
+        uploadPracticeVideoFile({
+          tutor_video_id: videoDetail.videoInfo.videoId,
+          tutee_video: new File(
             [blob],
             `practice-${videoDetail.videoInfo.videoId}-${new Date().toISOString()}.mp4`,
-            { type: 'video/mp4' }
-          )
-        );
-        uploadPracticeVideoFile(formData);
+            {
+              type: 'video/mp4',
+            }
+          ),
+        });
         navigate('/');
       });
 

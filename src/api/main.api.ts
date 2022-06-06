@@ -1,22 +1,28 @@
 import axios from '@/utils/request';
 
 import { DancerVideo } from '@/interfaces/app.interface';
-import { ResDancingVideos, ResUploadVideo } from './types';
+import {
+  ReqUploadPracticeVideoParams,
+  ReqUploadVideoParams,
+  ResDancingVideos,
+  ResUploadPracticeVideo,
+  ResUploadVideo,
+} from './types';
 
 export const getPracticeVideos = () =>
   axios.get<ResDancingVideos[]>(`/dancing`).then(({ data }) =>
     data.map(
       (info): DancerVideo => ({
         videoInfo: {
-          videoId: info.pk,
-          thumbnail: info.thumbnail_img,
-          title: info.video_name,
-          url: info.video,
-          artist: info.singer,
+          videoId: info.tutor_id,
+          thumbnail: info.thumbnail_url,
+          title: info.video_title,
+          url: info.video_url,
+          artist: info.song_artist,
         },
         dancer: {
-          uid: info.user,
-          name: '',
+          uid: info.uid,
+          name: info.username,
         },
       })
     )
@@ -33,55 +39,62 @@ export const getVideoDetail = (videoId: number) =>
   axios.get<ResDancingVideos>(`/dancing/${videoId}`).then(
     ({ data: info }): DancerVideo => ({
       videoInfo: {
-        videoId: info.pk,
-        thumbnail: info.thumbnail_img,
-        title: info.video_name,
-        url: info.video,
-        artist: info.singer,
+        videoId: info.tutor_id,
+        thumbnail: info.thumbnail_url,
+        title: info.video_title,
+        url: info.video_url,
+        artist: info.song_artist,
       },
       dancer: {
-        uid: info.user,
-        name: '',
+        uid: info.uid,
+        name: info.username,
       },
     })
   );
 
-export const uploadDancingVideoFile = (formData: FormData) =>
-  axios
+export const uploadDancingVideoFile = ({
+  video_title,
+  video_url,
+  thumbnail_img,
+  song_artist,
+}: ReqUploadVideoParams) => {
+  const formData = new FormData();
+  formData.append('video_title', video_title);
+  formData.append('video_url', video_url);
+  formData.append('thumbnail_img', thumbnail_img);
+  formData.append('song_artist', song_artist);
+
+  return axios
     .post<ResUploadVideo>('/dancing', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
-    .then(({ data: info }) => ({
+    .then(({ data }) => ({
       videoInfo: {
-        videoId: info.pk,
-        thumbnail: info.thumbnail_img,
-        title: info.video_name,
-        url: info.video,
+        videoId: data.tutor_id,
+        thumbnail: data.thumbnail_url,
+        title: data.video_title,
+        url: data.video_url,
       },
       dancer: {
-        uid: info.user,
-        name: '',
+        uid: data.uid,
+        name: data.username,
       },
     }));
+};
 
-export const uploadPracticeVideoFile = (formData: FormData) =>
-  axios
-    .post<ResUploadVideo>('/practice', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
-    .then(({ data: info }) => ({
-      videoInfo: {
-        videoId: info.pk,
-        thumbnail: info.thumbnail_img,
-        title: info.video_name,
-        url: info.video,
-      },
-      dancer: {
-        uid: info.user,
-        name: '',
-      },
-    }));
+export const uploadPracticeVideoFile = ({
+  tutor_video_id,
+  tutee_video,
+}: ReqUploadPracticeVideoParams) => {
+  const formData = new FormData();
+  formData.append('tutor_video_id', tutor_video_id.toString());
+  formData.append('tutee_video', tutee_video);
+
+  return axios.post<ResUploadPracticeVideo>('/practice', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};

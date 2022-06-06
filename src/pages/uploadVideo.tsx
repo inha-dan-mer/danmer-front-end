@@ -22,13 +22,12 @@ const UploadVideoPage = () => {
   const navigate = useNavigate();
 
   const handleUploadFile = (input: FormValues) => {
-    const formData = new FormData();
-    formData.append('video_name', input.title);
-    formData.append('video', input.videoFile);
-    formData.append('thumbnail_img', input.thumbnailFile);
-    formData.append('singer', input.singer);
-
-    uploadDancingVideoFile(formData).then(() => {
+    uploadDancingVideoFile({
+      video_title: input.title,
+      video_url: input.videoFile,
+      thumbnail_img: input.thumbnailFile,
+      song_artist: input.singer,
+    }).then(() => {
       navigate('/');
     });
   };
