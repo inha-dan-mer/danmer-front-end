@@ -17,8 +17,7 @@ const SignInPage = () => {
   const handleSignUp = (input: LoginUser) => {
     signIn(input)
       .then(() => {
-        // TODO 토스트 메세지
-        navigate(URL_VALUE.signIn);
+        navigate(URL_VALUE.main);
       })
       .catch((e) => console.error(e));
   };

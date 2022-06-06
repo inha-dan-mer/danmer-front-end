@@ -18,4 +18,12 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
+instance.interceptors.response.use((res) => {
+  if (res.status === 403) {
+    localStorage.removeItem('user');
+    window.open('/signin');
+  }
+  return res;
+});
+
 export default instance;

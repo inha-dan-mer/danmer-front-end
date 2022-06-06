@@ -7,6 +7,4 @@ export const signUp = (user: User) => axios.post<User>('/accounts/signup', user)
 export const signIn = (user: LoginUser) =>
   axios.post<ResAuthUser>('/accounts/login', user).then(({ data }) => {
     localStorage.setItem('user', JSON.stringify(data));
-    // @ts-ignore
-    axios.defaults.headers['x-auth-token'] = data.token;
   });
