@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
-import { getPracticeVideos } from '@/api/main.api';
+import { getDancingVideos } from '@/api/main.api';
 import { DancerVideo } from '@/interfaces/app.interface';
 
 import VideoItem from './VideoItem';
@@ -10,7 +10,7 @@ const VideoList = () => {
   const [videoList, setVideoList] = useState<DancerVideo[] | null>(null);
 
   useEffect(() => {
-    getPracticeVideos()
+    getDancingVideos()
       .then((data) => {
         setVideoList(data);
       })

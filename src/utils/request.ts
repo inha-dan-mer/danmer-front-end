@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import env from '@/config/env';
+import { URL_VALUE } from './constants';
 
 const instance = axios.create({
   baseURL: env.API_URL,
@@ -19,9 +21,9 @@ instance.interceptors.request.use((config) => {
 });
 
 instance.interceptors.response.use((res) => {
-  if (res.status === 403) {
+  if (res.status === 401) {
     localStorage.removeItem('user');
-    window.open('/signin');
+    window.open(URL_VALUE.signIn);
   }
   return res;
 });

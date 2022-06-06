@@ -26,3 +26,12 @@ export type DancerVideo = {
     name: string;
   };
 };
+
+export type PracticeVideo = {
+  videoInfo: {
+    videoId: number;
+    feedback: any;
+    url: string;
+  };
+  tutorVideoId: number;
+};

@@ -16,6 +16,10 @@ const Header = () => {
     navigate(URL_VALUE.signIn);
   };
 
+  const handleMyVideos = () => {
+    navigate(URL_VALUE.me);
+  };
+
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (!user) {
@@ -30,7 +34,10 @@ const Header = () => {
       <Logo to="/">DANMER</Logo>
       <Right>
         {user ? (
-          <TextButton onClick={handleLogout}>로그아웃</TextButton>
+          <>
+            <TextButton onClick={handleLogout}>로그아웃</TextButton>
+            <TextButton onClick={handleMyVideos}>나의 영상 보기</TextButton>
+          </>
         ) : (
           <TextButton onClick={() => navigate(URL_VALUE.signIn)}>로그인</TextButton>
         )}

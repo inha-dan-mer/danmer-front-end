@@ -1,16 +1,45 @@
 import axios from '@/utils/request';
 
-import { DancerVideo } from '@/interfaces/app.interface';
+import { DancerVideo, PracticeVideo } from '@/interfaces/app.interface';
 import {
   ReqUploadPracticeVideoParams,
   ReqUploadVideoParams,
-  ResDancingVideos,
-  ResUploadPracticeVideo,
-  ResUploadVideo,
+  ResDancingVideo,
+  ResPracticeVideo,
+  ResUserVideos,
 } from './types';
 
-export const getPracticeVideos = () =>
-  axios.get<ResDancingVideos[]>(`/dancing`).then(({ data }) =>
+export const getUserVideos = () =>
+  axios.get<ResUserVideos>(`/accounts/profile`).then(({ data }) => ({
+    dancing: data.tutor_list_video.map(
+      (info): DancerVideo => ({
+        videoInfo: {
+          videoId: info.tutor_id,
+          thumbnail: info.thumbnail_url,
+          title: info.video_title,
+          url: info.video_url,
+          artist: info.song_artist,
+        },
+        dancer: {
+          uid: info.uid,
+          name: info.username,
+        },
+      })
+    ),
+    practice: data.tutee_video_list.map(
+      (info): PracticeVideo => ({
+        videoInfo: {
+          videoId: info.tutee_id,
+          url: info.tutee_video,
+          feedback: info.feedback_result,
+        },
+        tutorVideoId: info.tutor_video_id,
+      })
+    ),
+  }));
+
+export const getDancingVideos = () =>
+  axios.get<ResDancingVideo[]>(`/dancing`).then(({ data }) =>
     data.map(
       (info): DancerVideo => ({
         videoInfo: {
@@ -36,7 +65,7 @@ export const getVideoRange = (videoUrl: string, range: [number, number]) =>
   });
 
 export const getVideoDetail = (videoId: number) =>
-  axios.get<ResDancingVideos>(`/dancing/${videoId}`).then(
+  axios.get<ResDancingVideo>(`/dancing/${videoId}`).then(
     ({ data: info }): DancerVideo => ({
       videoInfo: {
         videoId: info.tutor_id,
@@ -65,7 +94,7 @@ export const uploadDancingVideoFile = ({
   formData.append('song_artist', song_artist);
 
   return axios
-    .post<ResUploadVideo>('/dancing', formData, {
+    .post<ResDancingVideo>('/dancing', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -92,7 +121,7 @@ export const uploadPracticeVideoFile = ({
   formData.append('tutor_video_id', tutor_video_id.toString());
   formData.append('tutee_video', tutee_video);
 
-  return axios.post<ResUploadPracticeVideo>('/practice', formData, {
+  return axios.post<ResPracticeVideo>('/practice', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
