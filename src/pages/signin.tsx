@@ -45,7 +45,10 @@ const SignInPage = () => {
         </Card>
       </Contents>
       <ButtonWrapper>
-        <Button onClick={handleSubmit(handleSignUp)} style={{ width: 300 }}>
+        <Button onClick={() => navigate(URL_VALUE.signUp)} style={{ width: 200 }}>
+          회원가입하기
+        </Button>
+        <Button onClick={handleSubmit(handleSignUp)} style={{ width: 200 }}>
           로그인하기
         </Button>
       </ButtonWrapper>
@@ -81,7 +84,9 @@ const Label = styled.div`
   font-size: 0.9rem;
 `;
 const ButtonWrapper = styled.div`
+  display: flex;
   margin-top: 30px;
+  gap: 10px;
 `;
 
 export default SignInPage;
