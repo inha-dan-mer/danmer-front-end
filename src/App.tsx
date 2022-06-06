@@ -7,6 +7,7 @@ import theme from '@/styles/theme';
 import { URL_VALUE } from '@/utils/constants';
 
 import PageLayout from '@/components/PageLayout';
+import AuthCheck from '@/components/AuthCheck';
 
 const LoginPage = React.lazy(() => import('@/pages/signin'));
 const SignUpPage = React.lazy(() => import('@/pages/signUp'));
@@ -23,17 +24,19 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Router>
-          <PageLayout>
-            <Routes>
-              <Route path={URL_VALUE.signIn} element={<LoginPage />} />
-              <Route path={URL_VALUE.signUp} element={<SignUpPage />} />
+          <AuthCheck>
+            <PageLayout>
+              <Routes>
+                <Route path={URL_VALUE.signIn} element={<LoginPage />} />
+                <Route path={URL_VALUE.signUp} element={<SignUpPage />} />
 
-              <Route path={URL_VALUE.main} element={<MainPage />} />
-              <Route path={URL_VALUE.videoUpload} element={<UploadVideoPage />} />
-              <Route path={URL_VALUE.videoDetail} element={<VideoDetailPage />} />
-              <Route path={URL_VALUE.recordDancing} element={<RecordDancingPage />} />
-            </Routes>
-          </PageLayout>
+                <Route path={URL_VALUE.main} element={<MainPage />} />
+                <Route path={URL_VALUE.videoUpload} element={<UploadVideoPage />} />
+                <Route path={URL_VALUE.videoDetail} element={<VideoDetailPage />} />
+                <Route path={URL_VALUE.recordDancing} element={<RecordDancingPage />} />
+              </Routes>
+            </PageLayout>
+          </AuthCheck>
         </Router>
       </ThemeProvider>
     </QueryClientProvider>

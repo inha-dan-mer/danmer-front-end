@@ -55,13 +55,13 @@ export const getVideoDetail = (videoId: number) =>
 export const uploadDancingVideoFile = ({
   video_title,
   video_url,
-  thumbnail_img,
+  thumbnail_url,
   song_artist,
 }: ReqUploadVideoParams) => {
   const formData = new FormData();
   formData.append('video_title', video_title);
   formData.append('video_url', video_url);
-  formData.append('thumbnail_img', thumbnail_img);
+  formData.append('thumbnail_url', thumbnail_url);
   formData.append('song_artist', song_artist);
 
   return axios

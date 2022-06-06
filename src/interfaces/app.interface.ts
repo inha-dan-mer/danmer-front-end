@@ -1,3 +1,12 @@
+export type User = LoginUser & {
+  email: string;
+};
+
+export type LoginUser = {
+  username: string;
+  password: string;
+};
+
 export interface Video {
   videoId: number;
   thumbnail: string;
@@ -5,13 +14,15 @@ export interface Video {
   url: string;
   artist: string;
 }
-export interface User {
-  uid: number;
-  name: string;
-}
 
 /**
  * response
  */
 
-export type DancerVideo = { videoInfo: Video; dancer: User };
+export type DancerVideo = {
+  videoInfo: Video;
+  dancer: {
+    uid: number;
+    name: string;
+  };
+};

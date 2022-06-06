@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 
 import { signUp } from '@/api/auth.api';
 
-import { User } from '@/types';
+import { User } from '@/interfaces/app.interface';
 import { URL_VALUE } from '@/utils/constants';
 
 import Button from '@/components/buttons/Button';

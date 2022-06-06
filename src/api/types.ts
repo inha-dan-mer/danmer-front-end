@@ -1,3 +1,9 @@
+export type ResAuthUser = {
+  username: string;
+  user_id: number;
+  token: string;
+};
+
 export type ResDancingVideos = {
   tutor_id: number;
   video_title: string;
@@ -13,7 +19,7 @@ export type ResDancingVideos = {
 export type ReqUploadVideoParams = {
   video_title: string;
   video_url: File;
-  thumbnail_img: File;
+  thumbnail_url: File;
   song_artist: string;
 };
 export type ResUploadVideo = {

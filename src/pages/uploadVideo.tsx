@@ -25,7 +25,7 @@ const UploadVideoPage = () => {
     uploadDancingVideoFile({
       video_title: input.title,
       video_url: input.videoFile,
-      thumbnail_img: input.thumbnailFile,
+      thumbnail_url: input.thumbnailFile,
       song_artist: input.singer,
     }).then(() => {
       navigate('/');

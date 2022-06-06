@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import { signIn } from '@/api/auth.api';
 
-import { LoginUser } from '@/types';
+import { LoginUser } from '@/interfaces/app.interface';
 import { URL_VALUE } from '@/utils/constants';
 
 import Button from '@/components/buttons/Button';
