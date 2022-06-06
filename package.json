@@ -7,7 +7,7 @@
     "dev": "webpack serve --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "json-server": "npx json-server ./data.json --port 4000",
-    "deploy": "aws s3 sync ./build s3://danmer-web --profile=danmer-user"
+    "deploy": "aws s3 sync ./build s3://danmer.site --profile=danmer-user"
   },
   "author": "",
   "license": "ISC",
