@@ -33,5 +33,15 @@ export type PracticeVideo = {
     feedback: any;
     url: string;
   };
-  tutorVideoId: number;
+  tutorVideo: {
+    id: number;
+    title: string;
+    thumbnailUrl: string;
+    tutorName: string;
+  };
+};
+
+export type MyVideos = {
+  dancing: DancerVideo[];
+  practice: PracticeVideo[];
 };

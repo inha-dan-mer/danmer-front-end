@@ -17,6 +17,7 @@ const UploadVideoPage = React.lazy(() => import('@/pages/uploadVideo'));
 const VideoDetailPage = React.lazy(() => import('@/pages/videoDetail'));
 const RecordDancingPage = React.lazy(() => import('@/pages/recordDancing'));
 const MyProfilePage = React.lazy(() => import('@/pages/myProfile'));
+const FeedbackPage = React.lazy(() => import('@/pages/feedback'));
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path={URL_VALUE.videoDetail} element={<VideoDetailPage />} />
                 <Route path={URL_VALUE.recordDancing} element={<RecordDancingPage />} />
                 <Route path={URL_VALUE.me} element={<MyProfilePage />} />
+                <Route path={URL_VALUE.feedback} element={<FeedbackPage />} />
               </Routes>
             </PageLayout>
           </AuthCheck>

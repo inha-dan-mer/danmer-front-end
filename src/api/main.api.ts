@@ -5,13 +5,14 @@ import {
   ReqUploadPracticeVideoParams,
   ReqUploadVideoParams,
   ResDancingVideo,
+  ResFeedbackVideo,
   ResPracticeVideo,
   ResUserVideos,
 } from './types';
 
 export const getUserVideos = () =>
   axios.get<ResUserVideos>(`/accounts/profile`).then(({ data }) => ({
-    dancing: data.tutor_list_video.map(
+    dancing: data.tutor_video_list.map(
       (info): DancerVideo => ({
         videoInfo: {
           videoId: info.tutor_id,
@@ -33,10 +34,23 @@ export const getUserVideos = () =>
           url: info.tutee_video,
           feedback: info.feedback_result,
         },
-        tutorVideoId: info.tutor_video_id,
+        tutorVideo: {
+          id: info.tutor_video_id,
+          title: info.video_title,
+          thumbnailUrl: info.thumbnail_url,
+          tutorName: info.tutor_username,
+        },
       })
     ),
   }));
+
+export const getProcessingPracticeVideos = () =>
+  axios
+    .get<{ tutee_id: number }[]>(`/none/feedback`)
+    .then(({ data }) => data.map((d) => d.tutee_id));
+
+export const getVideoFeedback = (videoId: number) =>
+  axios.get<ResFeedbackVideo>(`/feedback/${videoId}`).then(({ data }) => data);
 
 export const getDancingVideos = () =>
   axios.get<ResDancingVideo[]>(`/dancing`).then(({ data }) =>

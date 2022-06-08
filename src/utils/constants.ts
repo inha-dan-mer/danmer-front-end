@@ -6,4 +6,5 @@ export const URL_VALUE = {
   videoDetail: '/video/:videoId',
   recordDancing: '/record/:videoId',
   me: '/me',
+  feedback: '/feedback/:videoId',
 };
