@@ -30,11 +30,24 @@ export type ResPracticeVideo = {
   tutee_id: number;
   tutee_video: string;
   tutor_video_id: number;
-  feedback_result?: string;
+  feedback_result?: number[];
   uid: number;
+  video_title: string;
+  thumbnail_url: string;
+  song_artist: string;
+  tutor_username: string;
+  tutor_uid: number;
+};
+export type ResFeedbackVideo = {
+  video_title: string;
+  tutee_id: number;
+  tutor_id: number;
+  tutee_video_url: string;
+  tutor_video_url: string;
+  feedback_result: number[];
 };
 
 export type ResUserVideos = {
   tutee_video_list: ResPracticeVideo[];
-  tutor_list_video: ResDancingVideo[];
+  tutor_video_list: ResDancingVideo[];
 };

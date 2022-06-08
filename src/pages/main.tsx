@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
+import { getProcessingPracticeVideos } from '@/api/main.api';
 import env from '@/config/env';
 
 import VideoList from '@/components/VideoList';
@@ -10,53 +11,55 @@ import Button from '@/components/buttons/Button';
 const MainPage = () => {
   const navigate = useNavigate();
 
+  const [processingVideos, setProcessingVideos] = useState<number[]>([]);
+  const eventSource = useRef<EventSource>();
+
   const connectSSE = () => {
     const user = localStorage.getItem('user');
     if (!user) return;
     const { user_id } = JSON.parse(user);
 
-    const eventSource = new EventSource(`${env.API_URL}/feedback/${user_id}/sse`);
+    eventSource.current = new EventSource(`${env.API_URL}/feedback/${user_id}/sse`, {
+      withCredentials: true,
+    });
 
-    eventSource.addEventListener('sse', function (event) {
+    eventSource.current.onmessage = function (event) {
+      console.log('event', event);
       const data = JSON.parse(event.data);
-      console.log(data);
+      console.log('data', data);
 
-      // (async () => {
-      //   // 브라우저 알림
-      //   const showNotification = () => {
-      //     const notification = new Notification('코드 봐줘', {
-      //       body: data.content,
-      //     });
+      if (data.staus === 'success') {
+        new Notification('피드백 도착 📥', { body: '나의 연습 영상 피드백이 도착했습니다!' });
+      }
+    };
+  };
 
-      //     setTimeout(() => {
-      //       notification.close();
-      //     }, 10 * 1000);
-
-      //     notification.addEventListener('click', () => {
-      //       window.open(data.url, '_blank');
-      //     });
-      //   };
-
-      //   // 브라우저 알림 허용 권한
-      //   let granted = false;
-
-      //   if (Notification.permission === 'granted') {
-      //     granted = true;
-      //   } else if (Notification.permission !== 'denied') {
-      //     let permission = await Notification.requestPermission();
-      //     granted = permission === 'granted';
-      //   }
-
-      //   // 알림 보여주기
-      //   if (granted) {
-      //     showNotification();
-      //   }
-      // })();
+  const getNotificationPermission = () => {
+    Notification.requestPermission().then((result) => {
+      console.log(result);
+      if (result === 'granted') {
+        connectSSE();
+        getProcessingPracticeVideos().then((data) => {
+          if (data.length === 0) {
+            eventSource.current?.close();
+            eventSource.current = undefined;
+          }
+          setProcessingVideos(data);
+        });
+      }
     });
   };
 
   useEffect(() => {
+    // getNotificationPermission();
     connectSSE();
+    getProcessingPracticeVideos().then((data) => {
+      if (data.length === 0) {
+        eventSource.current?.close();
+        eventSource.current = undefined;
+      }
+      setProcessingVideos(data);
+    });
   }, []);
 
   return (

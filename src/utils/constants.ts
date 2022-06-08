@@ -8,3 +8,5 @@ export const URL_VALUE = {
   me: '/me',
   feedback: '/feedback/:videoId',
 };
+
+export const FEEDBACK_DURATION = 3;

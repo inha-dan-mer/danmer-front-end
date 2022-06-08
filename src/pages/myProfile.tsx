@@ -13,7 +13,6 @@ const MyProfilePage = () => {
 
   useEffect(() => {
     getUserVideos().then((data) => {
-      console.log(data);
       setMyVideoList(data);
     });
   }, []);
@@ -105,6 +104,10 @@ const VideoCard = styled.li`
 
   border: 1px solid grey;
   border-radius: 8px;
+  transition: 0.15s all ease;
+  &:hover {
+    box-shadow: white 0px 0px 8px;
+  }
 `;
 const VideoCardId = styled.div`
   padding: 10px;
